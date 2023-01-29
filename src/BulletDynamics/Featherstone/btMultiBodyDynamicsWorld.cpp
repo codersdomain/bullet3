@@ -517,8 +517,8 @@ void	btMultiBodyDynamicsWorld::integrateTransforms(btScalar timeStep)
 				if (bod->getBaseCollider())
 				{
 					btVector3 posr = local_origin[0];
-					float pos[4]={posr.x(),posr.y(),posr.z(),1};
-					float quat[4]={-world_to_local[0].x(),-world_to_local[0].y(),-world_to_local[0].z(),world_to_local[0].w()};
+					btScalar pos[4]={posr.x(),posr.y(),posr.z(),1};
+					btScalar quat[4]={-world_to_local[0].x(),-world_to_local[0].y(),-world_to_local[0].z(),world_to_local[0].w()};
 					btTransform tr;
 					tr.setIdentity();
 					tr.setOrigin(posr);
@@ -547,8 +547,8 @@ void	btMultiBodyDynamicsWorld::integrateTransforms(btScalar timeStep)
 						int index = link+1;
 
 						btVector3 posr = local_origin[index];
-						float pos[4]={posr.x(),posr.y(),posr.z(),1};
-						float quat[4]={-world_to_local[index].x(),-world_to_local[index].y(),-world_to_local[index].z(),world_to_local[index].w()};
+						btScalar pos[4]={posr.x(),posr.y(),posr.z(),1};
+						btScalar quat[4]={-world_to_local[index].x(),-world_to_local[index].y(),-world_to_local[index].z(),world_to_local[index].w()};
 						btTransform tr;
 						tr.setIdentity();
 						tr.setOrigin(posr);
