@@ -92,7 +92,7 @@ protected:
 	int				m_internalType;
 
 	///users can point to their objects, m_userPointer is not used by Bullet, see setUserPointer/getUserPointer
-	union
+	struct
 	{
 		void*			m_userObjectPointer;
 		int	m_userIndex;
