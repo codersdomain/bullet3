@@ -273,9 +273,9 @@ void	btCollisionWorld::rayTestSingleInternal(const btTransform& rayFromTrans,con
 										const btCollisionObjectWrapper* collisionObjectWrap,
 										RayResultCallback& resultCallback)
 {
-	btSphereShape pointShape(btScalar(0.0));
-	pointShape.setMargin(0.f);
-	const btConvexShape* castShape = &pointShape;
+    btSphereShape pointShape(btScalar(0.0));
+    pointShape.setMargin(0.f);
+    const btConvexShape* castShape = &pointShape;
 	const btCollisionShape* collisionShape = collisionObjectWrap->getCollisionShape();
 	const btTransform& colObjWorldTransform = collisionObjectWrap->getWorldTransform();
 
@@ -569,6 +569,8 @@ void	btCollisionWorld::rayTestSingleInternal(const btTransform& rayFromTrans,con
 						rayCB.ProcessLeaf(i);
 					}	
 				}
+			} else {
+                collisionShape->rayTestSingleInternal(rayFromTrans, rayToTrans, collisionObjectWrap, resultCallback);
 			}
 		}
 	}
@@ -842,7 +844,9 @@ void	btCollisionWorld::objectQuerySingleInternal(const btConvexShape* castShape,
 						&tmpObj,my_cb, allowedPenetration);
 					
 				}
-			}
+			} else {
+                collisionShape->objectQuerySingleInternal(castShape, convexFromTrans, convexToTrans, colObjWrap, resultCallback, allowedPenetration);
+            }
 		}
 	}
 }

@@ -16,6 +16,8 @@ subject to the following restrictions:
 #ifndef BT_COLLISION_SHAPE_H
 #define BT_COLLISION_SHAPE_H
 
+#include "BulletCollision/BroadphaseCollision/btDispatcher.h"
+#include "BulletCollision/CollisionDispatch/btCollisionWorld.h"
 #include "LinearMath/btTransform.h"
 #include "LinearMath/btVector3.h"
 #include "LinearMath/btMatrix3x3.h"
@@ -109,6 +111,15 @@ public:
 
 	
 	int		getShapeType() const { return m_shapeType; }
+
+
+    virtual void rayTestSingleInternal(const btTransform& rayFromTrans,const btTransform& rayToTrans,
+										const btCollisionObjectWrapper* collisionObjectWrap,
+										btCollisionWorld::RayResultCallback& resultCallback) const {}
+
+    virtual void objectQuerySingleInternal(const btConvexShape* castShape,const btTransform& convexFromTrans,const btTransform& convexToTrans,
+											const btCollisionObjectWrapper* colObjWrap,
+											btCollisionWorld::ConvexResultCallback& resultCallback, btScalar allowedPenetration) const {}
 
 	///the getAnisotropicRollingFrictionDirection can be used in combination with setAnisotropicFriction
 	///See Bullet/Demos/RollingFrictionDemo for an example
